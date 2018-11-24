@@ -2,25 +2,15 @@ import java.util.Arrays;
 
 public class Eredmenyek {
  private String nyelv;
- private int ev[];
+ private int ev[]= new int[9];
  private int ossz;
-/* 
-public Eredmenyek(String nyelv,int evek[]) {
-	super();
-	this.nyelv = nyelv;
-	this.ossz=0;
-	for (int i = 0; i < evek.length; i++) {
-		this.ev[i] = evek[i];
-		this.ossz+=evek[i];
-		}
-	}
-*/
+
  public Eredmenyek(String sor) {
-	String[] t=sor.split(";");
-	this.nyelv=t[0];
-	for (int i = 0; i < t.length-1; i++) {
-		this.ev[i]=Integer.parseInt(t[i+1]);
-	}
+	 String[] t=sor.split(";");
+	 this.nyelv=t[0];
+	 for (int i = 0; i < t.length-1; i++) {
+    	this.ev[i]=Integer.parseInt(t[i+1]);
+	 }
 	for( int i : ev) {
 		    this.ossz += i;
 		}
@@ -45,7 +35,7 @@ public void setOssz(int ossz) {
 }
 @Override
 public String toString() {
-	return "Eredmenyek [nyelv=" + nyelv + ", ev=" + Arrays.toString(ev) + ", ossz=" + ossz + "]";
+	return nyelv + " - " + Arrays.toString(ev) + "= " + ossz;
 }
 }
 
