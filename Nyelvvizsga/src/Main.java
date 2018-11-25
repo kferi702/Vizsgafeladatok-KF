@@ -10,6 +10,7 @@ public class Main {
 	static List<Eredmenyek> sikertelen= lista("sikertelen.csv");
 	static Scanner sc = new Scanner(System.in);
 	static int keresettEv=0;
+	
 
 	public static List<Eredmenyek> lista(String f_neve) {
 		List<Eredmenyek> program = new ArrayList<>();
@@ -65,7 +66,9 @@ public class Main {
 	}
 	public static void f4() {
 		System.out.println("4. feladat");
+		
 		Map<String, Double> sikertelenV= new HashMap<>();
+		
 		for (int i = 0; i < sikeres.size(); i++) {
 			
 			double arany;
@@ -94,6 +97,33 @@ public class Main {
 	
 	public static void f5() {
 		System.out.println("5. feladat");
+
+		for (int i=0; i<sikeres.size();i++) {
+			if (sikeres.get(i).getEv()[keresettEv]==0 && sikertelen.get(i).getEv()[keresettEv]==0) {
+				System.out.println("\t"+sikeres.get(i).getNyelv());
+			}
+		}
+
+	}
+	public static void f6() {
+		System.out.println("Fájlok kiírása....");
+		
+		String fajlba="";
+		
+		for (int i = 0; i < sikeres.size(); i++) {
+			int ossz=sikeres.get(i).getOssz()+sikertelen.get(i).getOssz();
+			double arany=sikeres.get(i).getOssz()/(double)ossz*100;
+			fajlba+=sikeres.get(i).getNyelv()+";"
+					+ossz+";"
+					+new DecimalFormat("00.00").format(arany)+"%\n";
+		}
+		try {
+			Files.write(Paths.get("osszesites.csv"),fajlba.getBytes());
+			
+			System.out.println("\t\t\t...sikeresn megtörtént!");
+		} catch (Exception e) {
+			System.out.println("\t\t\t...közben hiba történt! "+e);
+		}
 	}
 
 
@@ -102,6 +132,7 @@ public class Main {
 	f3();
 	f4();
 	f5();
+	f6();
 	
 	}
 
