@@ -21,7 +21,7 @@ public class Main {
 				program.add(o);
 				}			
 		} catch (Exception e) {
-			System.err.println("Hiba a " + f_neve + " nevû fájl  beolvasásnál!"+ e);
+			System.err.println("Hiba a " + f_neve + " nevï¿½ fï¿½jl  beolvasï¿½snï¿½l!"+ e);
 		}
 
 		return program;
@@ -30,23 +30,23 @@ public class Main {
 	public static void f2() {
 		System.out.println("2. feladat");
 
-		//Létrehoz egy HashMap-et és a put metódussal feltölti a kulcs érték párokat
+		//Lï¿½trehoz egy HashMap-et ï¿½s a put metï¿½dussal feltï¿½lti a kulcs ï¿½rtï¿½k pï¿½rokat
 		Map<String, Integer> ossz= new HashMap<>();
 		for (int i=0; i<sikeres.size();i++) {
 			ossz.put(sikeres.get(i).getNyelv(),(sikeres.get(i).getOssz()+sikertelen.get(i).getOssz()));
 		}
-		//Map sorba rendezése value szerint  *Comptaror.reverseOrder()* csökkenõ sorrendbe állítja
+		//Map sorba rendezï¿½se value szerint  *Comptaror.reverseOrder()* csï¿½kkenï¿½ sorrendbe ï¿½llï¿½tja
 		Map<String, Integer> osszCsokkeno = 
 			     ossz.entrySet().stream()
 			    .sorted(Entry.comparingByValue(Comparator.reverseOrder()))
 			    .collect(Collectors.toMap(Entry::getKey, Entry::getValue,
 			                              (e1, e2) -> e1, LinkedHashMap::new));
-		//kiírás ellenörzésre
+//		kiï¿½rï¿½s ellenï¿½rzï¿½sre
 //		for (String s : osszCsokkeno.keySet()) {
 //			System.out.println(s +"- "+osszCsokkeno.get(s));
 //		}
-		//keySet() lekérdezi a hashmap tartalmát és a toArray-al leszûkítem
-		System.out.print("\tA legnépszerübb nyelvek: ");
+		//keySet() lekï¿½rdezi a hashmap tartalmï¿½t ï¿½s a toArray-al leszï¿½kï¿½tem
+		System.out.print("\tA legnï¿½pszerï¿½bb nyelvek: ");
 		for (int i = 0; i <3; i++) {
 			System.out.print(osszCsokkeno.keySet().toArray()[i]+", ");
 		}
@@ -54,10 +54,10 @@ public class Main {
 	}
 	public static void f3() {
 		System.out.println("\n3. Feladat");
-		System.out.print("\tvizsgálandó év: ");
+		System.out.print("\tvizsgï¿½landï¿½ ï¿½v: ");
 		keresettEv= sc.nextInt();
 			if (keresettEv>2017 || keresettEv<2009) {
-				System.out.println("Érvénytelen év!");
+				System.out.println("ï¿½rvï¿½nytelen ï¿½v!");
 				System.exit(0);	
 		}else {
 			keresettEv-=2009;
@@ -90,7 +90,7 @@ public class Main {
 			System.out.println(
 					"\t"+(keresettEv+2009)+"-ben/ban "
 					+sikertelenVCs.keySet().toArray()[0]
-					+" nyelvbõl a sikertelen vizsgák aránya "
+					+" nyelvbï¿½l a sikertelen vizsgï¿½k arï¿½nya "
 					+new DecimalFormat("00.00").format(sikertelenVCs.values().toArray()[0])+"%");
 			}
 		
@@ -106,7 +106,7 @@ public class Main {
 
 	}
 	public static void f6() {
-		System.out.println("Fájlok kiírása....");
+		System.out.println("Fï¿½jlok kiï¿½rï¿½sa....");
 		
 		String fajlba="";
 		
@@ -120,9 +120,9 @@ public class Main {
 		try {
 			Files.write(Paths.get("osszesites.csv"),fajlba.getBytes());
 			
-			System.out.println("\t\t\t...sikeresn megtörtént!");
+			System.out.println("\t\t\t...sikeresn megtï¿½rtï¿½nt!");
 		} catch (Exception e) {
-			System.out.println("\t\t\t...közben hiba történt! "+e);
+			System.out.println("\t\t\t...kï¿½zben hiba tï¿½rtï¿½nt! "+e);
 		}
 	}
 
